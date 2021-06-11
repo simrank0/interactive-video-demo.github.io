@@ -33,50 +33,66 @@
             var flag = true;
             var video = document.getElementById('video1');
             var video2 = document.getElementById('video2');
+	    var video3 = document.getElementById('video3');
+            var video4 = document.getElementById('video4');
             var hotspot = document.getElementById('hotspot');
             var hotspot2 = document.getElementById('hotspot2');
 
             hotspot.addEventListener('click', function() {
-                setTimeout(()=>{video.setAttribute('src', "https://drive.google.com/uc?export=download&id=1VhuUzmsmvuWZ6k1VUKwAxoZbL1f3_S65");
-                video.loop=false;
-                video.currentTime=0;
-                video.load();
-                setTimeout(()=>{
-                    video.play();
-                    video2.style.display='none';
-                    video2.setAttribute('src', "");
-                    video.style.display='';
-                }, 3000)
-                hotspot.style.display='none';
-                hotspot2.style.display='none';}, 2000)
+//                 setTimeout(()=>{video.setAttribute('src', "https://drive.google.com/uc?export=download&id=1VhuUzmsmvuWZ6k1VUKwAxoZbL1f3_S65");
+//                 video.loop=false;
+//                 video.currentTime=0;
+//                 video.load();
+//                 setTimeout(()=>{
+//                     video.play();
+//                     video2.style.display='none';
+//                     video2.setAttribute('src', "");
+//                     video.style.display='';
+//                 }, 3000)
+//                 hotspot.style.display='none';
+//                 hotspot2.style.display='none';}, 2000)
+		hotspot.style.display='none';
+                hotspot2.style.display='none';
+                video.style.display='none'
+                video2.style.display='none'
+                video3.style.display=''
+                video4.style.display='none'
+                video3.play();
             });
 
             hotspot2.addEventListener('click', function() {
-                setTimeout(()=>{video.setAttribute('src', "https://drive.google.com/uc?export=download&id=16nLUf9AYUJeBk_kx7QCWVXStmiMc2QOn");
-                video.load();
-                setTimeout(()=>{
-                    video.loop=false;
-                    video.currentTime=1;
-                    video.play();
-                    video2.style.display='none';
-                    video.style.display='';
-                }, 3000)
+//                 setTimeout(()=>{video.setAttribute('src', "https://drive.google.com/uc?export=download&id=16nLUf9AYUJeBk_kx7QCWVXStmiMc2QOn");
+//                 video.load();
+//                 setTimeout(()=>{
+//                     video.loop=false;
+//                     video.currentTime=1;
+//                     video.play();
+//                     video2.style.display='none';
+//                     video.style.display='';
+//                 }, 3000)
+//                 hotspot.style.display='none';
+//                 hotspot2.style.display='none';}, 2000)
+		video.style.display='none'
+                video2.style.display='none'
+                video3.style.display='none'
+                video4.style.display=''
+                video4.play();
                 hotspot.style.display='none';
-                hotspot2.style.display='none';}, 2000)
+                hotspot2.style.display='none';
             });
 
             video.addEventListener('timeupdate', ()=>{
                 if(flag && video.duration-1.5<=video.currentTime){
                     flag = false;
                     video2.style.display=''
-                    video2.setAttribute('src', 'https://drive.google.com/uc?export=download&id=1NxX_8bXvpaMckp4ajsXUC5b3c2IWKFq_'); 
-                    video2.load();
+//                     video2.setAttribute('src', 'https://drive.google.com/uc?export=download&id=1NxX_8bXvpaMckp4ajsXUC5b3c2IWKFq_'); 
+//                     video2.load();
                     video2.loop=true;
-                    video2.play();
-                    console.log('in here')
-                    setTimeout(()=>{
+//                     video2.play();
+//                     console.log('in here')
+//                     setTimeout(()=>{
                         video.style.display='none';
-                    }, 3000)
+//                     }, 3000)
                 }
                 var vidCurrentTime = video.currentTime;
                 var idxNewHotspot = -1;
@@ -114,8 +130,14 @@
     <video id='video1' style='width:500px;' preload autoplay muted>
         <source id="vidSrc1" src="https://drive.google.com/uc?export=download&id=1jNZxI89-cGgafuGM3fYmucscRN-G98ld" type="video/mp4">
     </video>
-    <video id='video2'preload style='width:500px; display: none;'>
-        <source id="vidSrc1" src="" type="video/mp4">
+    <video id='video2'preload style='width:500px; display: none;' autoplay muted>
+        <source id="vidSrc1" src="https://drive.google.com/uc?export=download&id=1NxX_8bXvpaMckp4ajsXUC5b3c2IWKFq_" type="video/mp4">
+    </video>
+    <video id='video3'preload style='width:500px; display: none;' autoplay muted>
+        <source id="vidSrc1" src="https://drive.google.com/uc?export=download&id=1VhuUzmsmvuWZ6k1VUKwAxoZbL1f3_S65" type="video/mp4">
+    </video>
+    <video id='video4'preload style='width:500px; display: none;' autoplay muted>
+        <source id="vidSrc1" src="https://drive.google.com/uc?export=download&id=16nLUf9AYUJeBk_kx7QCWVXStmiMc2QOn" type="video/mp4">
     </video>
 </body>
 </html>
