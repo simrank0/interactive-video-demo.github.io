@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Video Demo</title>
+    <style>
+        video{
+            position: absolute;
+        }
+        #hotspot, #hotspot2 {
+            position:absolute;
+            z-index:300000;
+            border:2px solid;
+            border-color: grey;
+            border-radius:25px;
+            vertical-align: center;
+            text-align: center;
+            line-height: 50px;
+            color:white;
+        }
+        #hotspot:hover, #hotspot2:hover {
+            background-color:rgba(0,255,0,0.3);
+            border:4px solid;
+            border-color:#0f0;
+            cursor:pointer;
+        }
+    </style>
+    <script>
+        var idxHotspot = -1;
+        var arrHotspots = [
+            {"startTime":1.7,"endTime":2,"top":60,"left":295,"height":180,"width":140,"text":"Main shaft connected to blades spins in housing."},
+            ];
+        function init(){
+            var flag = true;
+            var video = document.getElementById('video1');
+            var video2 = document.getElementById('video2');
+            var hotspot = document.getElementById('hotspot');
+            var hotspot2 = document.getElementById('hotspot2');
+
+            hotspot.addEventListener('click', function() {
+                setTimeout(()=>{video.setAttribute('src', "BALL EXPLODE.mp4");
+                video.loop=false;
+                video.currentTime=0;
+                video.load();
+                setTimeout(()=>{
+                    video.play();
+                    video2.style.display='none';
+                    video2.setAttribute('src', "");
+                    video.style.display='';
+                }, 3000)
+                hotspot.style.display='none';
+                hotspot2.style.display='none';}, 1000)
+            });
+
+            hotspot2.addEventListener('click', function() {
+                setTimeout(()=>{video.setAttribute('src', "BALL basket.mp4");
+                video.load();
+                setTimeout(()=>{
+                    video.loop=false;
+                    video.currentTime=1;
+                    video.play();
+                    video2.style.display='none';
+                    video.style.display='';
+                }, 3000)
+                hotspot.style.display='none';
+                hotspot2.style.display='none';}, 1000)
+            });
+
+            video.addEventListener('timeupdate', ()=>{
+                if(flag && video.duration-1.5<=video.currentTime){
+                    flag = false;
+                    video2.style.display=''
+                    video2.setAttribute('src', 'BALL bound loop.mp4'); 
+                    video2.load();
+                    video2.loop=true;
+                    video2.play();
+                    console.log('in here')
+                    setTimeout(()=>{
+                        video.style.display='none';
+                    }, 3000)
+                }
+                var vidCurrentTime = video.currentTime;
+                var idxNewHotspot = -1;
+                for (var i=0; i<arrHotspots.length; i++) {
+                    if (vidCurrentTime>=arrHotspots[i].startTime && vidCurrentTime<arrHotspots[i].endTime) {
+                        idxNewHotspot = i;
+                    }
+                }
+                if (idxNewHotspot > -1) {
+				
+                    if (idxNewHotspot != idxHotspot) {
+                        hotspot.style.width 	= arrHotspots[idxNewHotspot].width+'px';
+                        hotspot.style.height 	= arrHotspots[idxNewHotspot].height+'px';
+                        hotspot.style.left 		= arrHotspots[idxNewHotspot].left - 210 + 'px';
+                        hotspot.style.top		= arrHotspots[idxNewHotspot].top+'px';
+                        hotspot.innerHTML='EXPLODE'
+                        hotspot2.style.width 	= arrHotspots[idxNewHotspot].width+'px';
+                        hotspot2.style.height 	= arrHotspots[idxNewHotspot].height+'px';
+                        hotspot2.style.left 	= arrHotspots[idxNewHotspot].left+'px';
+                        hotspot2.style.top		= arrHotspots[idxNewHotspot].top+'px';
+                        hotspot2.innerHTML='DUNK'
+                        hotspot.style.visibility = 'visible';
+                        hotspot2.style.visibility = 'visible';
+                        idxHotspot = idxNewHotspot;
+                    }
+                }
+            }, false)
+        }
+        window.addEventListener('load',init);
+    </script>
+</head>
+<body>
+    <div id="hotspot"></div>
+    <div id="hotspot2"></div>
+    <video id='video1' style='width:500px;' preload autoplay muted>
+        <source id="vidSrc1" src="BALL IN & LOOP.mp4" type="video/mp4">
+    </video>
+    <video id='video2'preload style='width:500px; display: none;'>
+        <source id="vidSrc1" src="BALL IN.mp4" type="video/mp4">
+    </video>
+</body>
+</html>
