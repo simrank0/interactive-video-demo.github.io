@@ -40,7 +40,7 @@
             var hotspot2 = document.getElementById('hotspot2');
 
             hotspot.addEventListener('click', function() {
-                setTimeout(()=>{video.setAttribute('src', "BALL EXPLODE.mp4");
+                setTimeout(()=>{video.setAttribute('src', "https://drive.google.com/uc?export=download&id=1VhuUzmsmvuWZ6k1VUKwAxoZbL1f3_S65");
                 video.loop=false;
                 video.currentTime=0;
                 video.load();
@@ -51,11 +51,11 @@
                     video.style.display='';
                 }, 3000)
                 hotspot.style.display='none';
-                hotspot2.style.display='none';}, 1000)
+                hotspot2.style.display='none';}, 2000)
             });
 
             hotspot2.addEventListener('click', function() {
-                setTimeout(()=>{video.setAttribute('src', "BALL basket.mp4");
+                setTimeout(()=>{video.setAttribute('src', "https://drive.google.com/uc?export=download&id=16nLUf9AYUJeBk_kx7QCWVXStmiMc2QOn");
                 video.load();
                 setTimeout(()=>{
                     video.loop=false;
@@ -65,14 +65,14 @@
                     video.style.display='';
                 }, 3000)
                 hotspot.style.display='none';
-                hotspot2.style.display='none';}, 1000)
+                hotspot2.style.display='none';}, 2000)
             });
 
             video.addEventListener('timeupdate', ()=>{
                 if(flag && video.duration-1.5<=video.currentTime){
                     flag = false;
                     video2.style.display=''
-                    video2.setAttribute('src', 'BALL bound loop.mp4'); 
+                    video2.setAttribute('src', 'https://drive.google.com/uc?export=download&id=1NxX_8bXvpaMckp4ajsXUC5b3c2IWKFq_'); 
                     video2.load();
                     video2.loop=true;
                     video2.play();
@@ -115,10 +115,10 @@
     <div id="hotspot"></div>
     <div id="hotspot2"></div>
     <video id='video1' style='width:500px;' preload autoplay muted>
-        <source id="vidSrc1" src="BALL IN & LOOP.mp4" type="video/mp4">
+        <source id="vidSrc1" src="https://drive.google.com/uc?export=download&id=1jNZxI89-cGgafuGM3fYmucscRN-G98ld" type="video/mp4">
     </video>
     <video id='video2'preload style='width:500px; display: none;'>
-        <source id="vidSrc1" src="BALL IN.mp4" type="video/mp4">
+        <source id="vidSrc1" src="" type="video/mp4">
     </video>
 </body>
 </html>
