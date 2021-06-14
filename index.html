@@ -85,7 +85,7 @@
             });
 
             video.addEventListener('timeupdate', ()=>{
-                if(flag && video.duration-1.5<=video.currentTime){
+                if(flag && video.duration-0.15<=video.currentTime){
                     flag = false;
                     video2.style.display=''
                     video2.loop=true;
