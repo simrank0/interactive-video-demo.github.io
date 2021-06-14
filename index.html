@@ -54,7 +54,6 @@
                     video.play();
                     flag = true;
                     idxNewHotspot = 1;
-                    console.log('playing')
                 }, 400)
                 setTimeout(()=>{
                     hotspot.style.display = '';
@@ -71,19 +70,18 @@
                 hotspot.style.display='none';
                 hotspot2.style.display='none';
                 setTimeout(()=>{
-                    video.style.display='none'
+                    video2.style.display='none'
                     video4.style.display='none'
-                    video2.style.display=''
-                    video2.currentTime=0
-                    video2.play();
+                    video.style.display=''
+                    video.currentTime=0
+                    video.play();
                     flag = true;
                     idxNewHotspot = 1;
-                    console.log('playing')
-                }, 1900)
+                }, 400)
                 setTimeout(()=>{
                     hotspot.style.display = '';
                     hotspot2.style.display = '';
-                }, 2700)
+                }, 1100)
             });
 
             video.addEventListener('timeupdate', ()=>{
