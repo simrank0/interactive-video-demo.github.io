@@ -6,6 +6,10 @@
         video{
             position: absolute;
         }
+        body{
+            margin-left: 0px;
+            margin-top: 0px;
+        }
         #hotspot, #hotspot2 {
             position:absolute;
             z-index:300000;
@@ -22,6 +26,11 @@
             border:4px solid;
             border-color:#0f0;
             cursor:pointer;
+        }
+        button{
+            position:absolute;
+            margin-left: 31em;
+            margin-top: 19em;
         }
     </style>
     <script>
@@ -83,7 +92,7 @@
                     hotspot2.style.display = '';
                 }, 2700)
             });
-
+            
             video.addEventListener('timeupdate', ()=>{
                 if(flag && video.duration-0.15<=video.currentTime){
                     flag = false;
@@ -120,6 +129,7 @@
         }
         window.addEventListener('load',init);
     </script>
+    
 </head>
 <body>
     <div id="hotspot"></div>
@@ -136,5 +146,47 @@
     <video id='video4'preload style='width:500px; display: none;' autoplay muted>
         <source id="vidSrc1" src="BALLBASKET.mp4" type="video/mp4">
     </video>
+    <button id="fs" onClick="fullScreen()">Full Screen</button>
+    <script>
+        let tog = true
+        function fullScreen(){
+            v1 = document.getElementById('video1');
+            v2 = document.getElementById('video2');
+            v3 = document.getElementById('video3');
+            v4 = document.getElementById('video4');
+
+            h1 = document.getElementById('hotspot');
+            h2 = document.getElementById('hotspot2');
+
+
+            if((!v1.paused || !v2.paused || !v3.paused || !v4.paused) && tog){
+                v1.style.width = "100vw"
+                v2.style.width = "100vw"
+                v3.style.width = "100vw"
+                v4.style.width = "100vw"
+                button = document.getElementById('fs');
+                button.style.marginLeft = "100em"
+                button.style.marginTop = "62em"
+                h1.style.marginLeft = "20vw";
+                h2.style.marginLeft = "45vw";
+                h1.style.marginTop = "10vw";
+                h2.style.marginTop = "10vw";
+                tog = false
+            }else{
+                tog = true
+                v1.style.width = "33vw"
+                v2.style.width = "33vw"
+                v3.style.width = "33vw"
+                v4.style.width = "33vw"
+                button = document.getElementById('fs');
+                button.style.marginLeft = "31em"
+                button.style.marginTop = "19em"
+                h1.style.marginLeft = "0em";
+                h2.style.marginLeft = "0em";
+                h1.style.marginTop = "0em";
+                h2.style.marginTop = "0em";
+            }
+        }
+    </script>
 </body>
 </html>
