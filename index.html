@@ -161,6 +161,7 @@
 
 
             if((!v1.paused || !v2.paused || !v3.paused || !v4.paused) && tog){
+                document.documentElement.requestFullscreen();
                 v1.style.width = "100vw"
                 v2.style.width = "100vw"
                 v3.style.width = "100vw"
@@ -186,6 +187,7 @@
                 h2.style.marginLeft = "0em";
                 h1.style.marginTop = "0em";
                 h2.style.marginTop = "0em";
+                document.exitFullscreen();
             }
         }
     </script>
